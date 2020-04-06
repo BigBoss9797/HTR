@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload</title>
+<style>
+#outer{
+  background-image: url('1.jpg');
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+html, body {
+  height: 100%;
+}
+
+#outer{
+  height: 100%;
+  font-size: large;
+  font-family: Arial;
+}
+#upload-button{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 12px;
+}
+#upload-button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: #3e8e41
+}
+#upload-button:active {
+  background-color: #3e8e41;
+  transform: translateY(4px);
+}
+</style>
+
+</head>
+<body>
+<div class="container-fluid" id="outer" style="text-align:center">
+    <h1>Welcome to my SimpleHTR Demo</h1>
+    <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file-picker">File Input</label><br>
+                <input id="file-picker" type="file" name="file" onchange="loadFile(event)" accept="image/*"  multiple>
+                <p class="help-block">Supported image are '.png' and '.jpg'</p>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="option" id="withoutLM" value="require contrast" checked>
+                    require contrast
+                    <br>
+                    <input type="radio" name="option" id="withoutLM" value="no need contrast" checked>
+                    no need contrast
+                  </label>
+                </div>
+                <img id="output" width="1000"/><br>
+                <button type="submit" value="Upload" id="upload-button" class="btn btn-primary">Submit</button>
+            </div>
+
+        </form>
+
+
+
+</div>
+
+</body>
+<script>
+    var loadFile = function(event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+
+</html>

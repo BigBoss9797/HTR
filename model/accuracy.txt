@@ -1,0 +1,2 @@
+Validation character error rate of saved model: 9.845044% 
+Word accuracy of saved model: 75.729167%
